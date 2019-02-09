@@ -14,3 +14,7 @@
  *= require_self
  */
 @import "materialize";
+
+table{
+  width: auto;
+}

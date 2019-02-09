@@ -1,0 +1,32 @@
+window.onload = page_ready
+function page_ready(){
+  vue_init();
+  get_current_data();
+}
+var current_data_lust_vue
+function vue_init() {
+    current_data_lust_vue = new Vue({
+      el: '#current-data',
+      data: {
+        items: [
+        ]
+      }
+    })
+}
+function get_current_data(){
+  if (window.location.pathname.includes("/infos/")){
+    let id = window.location.pathname.split("/").pop()
+
+    var link = `http://${window.location.host}/get/${id}`;
+    var data = {};
+    function http_request() {
+      Vue.http.get(link).then(function(response){
+        data = response.data.data;
+        current_data_lust_vue.items = data
+      }, function(error){
+        console.log(error.statusText);
+      });
+    }
+    setInterval(http_request.bind(this), 100)
+  }
+}

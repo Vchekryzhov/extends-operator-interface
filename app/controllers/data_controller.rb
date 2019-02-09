@@ -11,7 +11,8 @@ class DataController < ApplicationController
   def get
     redis = Redis.new
     result = redis.get(id)
-    render json: {data: result}, status:200
+    data = JSON.parse(result.gsub("=>",":")).map{|key, value|[key, value]} if result
+    render json: {data: data}, status:200
   end
 
   private
