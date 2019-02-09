@@ -3,6 +3,14 @@ function page_ready(){
   vue_init();
   get_current_data();
 }
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems);
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
+  });
 var current_data_lust_vue
 function vue_init() {
     current_data_lust_vue = new Vue({
@@ -13,6 +21,7 @@ function vue_init() {
       }
     })
 }
+
 function get_current_data(){
   if (window.location.pathname.includes("/infos/")){
     let id = window.location.pathname.split("/").pop()
