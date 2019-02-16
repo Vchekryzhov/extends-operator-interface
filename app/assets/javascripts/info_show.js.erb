@@ -1,7 +1,9 @@
 window.onload = page_ready
 function page_ready(){
-  vue_init();
-  get_current_data();
+  mototime_init();
+  plc_init();
+  get_mototime_data();
+  // get_plc_data();
 }
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.collapsible');
@@ -11,10 +13,21 @@ function page_ready(){
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems);
   });
-var current_data_lust_vue
-function vue_init() {
-    current_data_lust_vue = new Vue({
-      el: '#current-data',
+var mototime_data_lust_vue
+var plc_data_lust_vue
+
+function mototime_init() {
+    mototime_data_lust_vue = new Vue({
+      el: '#mototime-data',
+      data: {
+        items: [
+        ]
+      }
+    })
+}
+function plc_init() {
+    plc_data_lust_vue = new Vue({
+      el: '#plc-data',
       data: {
         items: [
         ]
@@ -22,16 +35,17 @@ function vue_init() {
     })
 }
 
-function get_current_data(){
+function get_mototime_data(){
   if (window.location.pathname.includes("/infos/")){
     let id = window.location.pathname.split("/").pop()
 
-    var link = `http://${window.location.host}/get/${id}`;
+    var link = `http://${window.location.host}/get/?ids[]=${"mototime_"+id}&ids[]=${"plc_"+id}`;
     var data = {};
     function http_request() {
       Vue.http.get(link).then(function(response){
         data = response.data.data;
-        current_data_lust_vue.items = data
+        mototime_data_lust_vue.items = data[0]
+        plc_data_lust_vue.items = data[1]
       }, function(error){
         console.log(error.statusText);
       });

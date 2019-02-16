@@ -2,48 +2,14 @@
   <!-- navbar content here -->
 </nav>
 
-<ul id="slide-out" class="sidenav">
-  <li>
-    <div class="user-view">
-      <div class="background">
-        <img src="">
-      </div>
-      <a href="#user"><img class="circle" src=""></a>
-      <a href="#name">
-        <span class="white-text name">John Doe</span></a>
-      <a href="#email">
-        <span class="white-text email">jdandturk@gmail.com</span></a>
-    </div>
-  </li>
-  <li>
-    <a href="#!">
-      <i class="material-icons">cloud</i>First Link With Icon</a>
-  </li>
-  <li>
-    <a href="#!">Second Link</a>
-  </li>
-  <li>
-    <div class="divider"></div>
-  </li>
-  <li>
-    <a class="subheader">Subheader</a>
-  </li>
-  <li>
-    <a class="waves-effect" href="#!">Third Link With Waves</a>
-  </li>
-</ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger">
-  <i class="material-icons">menu</i>
-</a>
-
 <div class="main-menu">
 
   <ul class="collapsible">
     <li>
       <div class="collapsible-header">
-        <i class="material-icons">filter_drama</i>Текущие данные</div>
+        <i class="material-icons">build</i>Моточасы</div>
       <div class="collapsible-body">
-        <table id="current-data" class="striped">
+        <table id="mototime-data" class="striped">
           <thead>
             <tr>
               <th>Название</th>
@@ -63,37 +29,21 @@
     </li>
     <li>
       <div class="collapsible-header">
-        <i class="material-icons">place</i>Моточасы</div>
+        <i class="material-icons">visibility</i>PLC</div>
       <div class="collapsible-body">
-        <h>МОТОЧАСЫ</h>
-        <table class="striped">
+        <table id="plc-data" class="striped">
           <thead>
             <tr>
-              <th>Часы</th>
-              <th>Мото</th>
+              <th>Название</th>
+              <th>Значение</th>
             </tr>
           </thead>
           <tbody>
-            <tr >
+            <tr v-for="item in items">
               <td>
-                Часов всего</td>
+                {{ item[0] }}</td>
               <td>
-                100
-              </td>
-            </tr>
-            <tr >
-              <td>
-                Часов за месяц</td>
-              <td>
-                50
-              </td>
-            </tr>
-            <tr >
-              <td>
-                Часов за неделю</td>
-              <td>
-                20
-              </td>
+                {{ item[1] }}</td>
             </tr>
           </tbody>
         </table>
