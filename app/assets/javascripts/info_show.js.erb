@@ -42,7 +42,7 @@ function get_mototime_data(){
   if (window.location.pathname.includes("/infos/")){
     let id = window.location.pathname.split("/").pop()
 
-    var link = `http://${window.location.host}/get/?ids[]=${"mototime_"+id}&ids[]=${"plc_"+id}`;
+    var link = `https://${window.location.host}/get/?ids[]=${"mototime_"+id}&ids[]=${"plc_"+id}`;
     var data = {};
     function http_request() {
       Vue.http.get(link).then(function(response){
