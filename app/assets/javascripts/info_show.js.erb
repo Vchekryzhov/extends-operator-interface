@@ -3,6 +3,9 @@ function page_ready(){
   mototime_init();
   plc_init();
   get_mototime_data();
+  document.getElementById('locale-form').addEventListener('change',function(){
+    this.submit();
+  })
   // get_plc_data();
 }
   document.addEventListener('DOMContentLoaded', function() {
