@@ -5,13 +5,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
     <nav>
-      <form id='locale-form' action="selected_locale" method="post">
+      <form id='locale-form' action="/selected-locale" method="post">
         <select name="locale" id="">
           <option value="ru" <%= 'selected' if I18n.locale == :ru %>>Русский</option>
           <option value="en" <%= 'selected' if I18n.locale == :en %>>Английский</option>
