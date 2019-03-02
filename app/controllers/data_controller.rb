@@ -7,7 +7,7 @@ class DataController < ApplicationController
     data = []
     ids.each do |id_data|
           result = redis.get(id_data)
-          data.push JSON.parse(result.gsub("=>",":")).map{|key, value|[key, value]} if result
+          data.push JSON.parse(result.gsub("=>",":")).map{|key, value|[I18n.t(key), value]} if result
     end
     render json: {data: data}, status:200
   end

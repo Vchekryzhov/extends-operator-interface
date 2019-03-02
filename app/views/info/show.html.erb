@@ -1,19 +1,15 @@
-<nav>
-  <!-- navbar content here -->
-</nav>
 
 <div class="main-menu">
-
   <ul class="collapsible">
     <li>
       <div class="collapsible-header">
-        <i class="material-icons">build</i>Моточасы</div>
+        <i class="material-icons">build</i><%= I18n.t(:mototime) %></div>
       <div class="collapsible-body">
         <table id="mototime-data" class="striped">
           <thead>
             <tr>
-              <th>Название</th>
-              <th>Значение</th>
+              <th><%= I18n.t(:title) %></th>
+              <th><%= I18n.t(:value) %></th>
             </tr>
           </thead>
           <tbody>
@@ -29,13 +25,13 @@
     </li>
     <li>
       <div class="collapsible-header">
-        <i class="material-icons">visibility</i>PLC</div>
+        <i class="material-icons">visibility</i><%= I18n.t(:plc) %></div>
       <div class="collapsible-body">
         <table id="plc-data" class="striped">
           <thead>
             <tr>
-              <th>Название</th>
-              <th>Значение</th>
+              <th><%= I18n.t(:title) %></th>
+              <th><%= I18n.t(:value) %></th>
             </tr>
           </thead>
           <tbody>

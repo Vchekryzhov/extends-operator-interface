@@ -5,6 +5,10 @@ class InfoController < ApplicationController
 
   end
 
+  def index
+    @machines = Machine.all
+  end
+
   private
 
   def id

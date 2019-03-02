@@ -10,6 +10,18 @@
   </head>
 
   <body>
+    <nav>
+      <form id='locale-form' action="selected_locale" method="post">
+        <select name="locale" id="">
+          <option value="ru" <%= 'selected' if I18n.locale == :ru %>>Русский</option>
+          <option value="en" <%= 'selected' if I18n.locale == :en %>>Английский</option>
+        </select>
+      </form>
+      <% if @machines %>
+        <p><%= I18n.t(:machine_count) %> <%= @machines.count  %></p>
+      <% end %>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

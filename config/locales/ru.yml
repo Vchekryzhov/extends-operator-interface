@@ -1,0 +1,18 @@
+ru:
+  title: "Название"
+  mototime: Моточасы
+  value: Значение
+  plc: ПЛК
+  detail: Подробнее
+  mototimes:
+    core_time: Время работы ядра (всего)
+    core_current_time: Время работы ядра (текущее)
+    reload_core: количество перезапусков ядра
+    chanel_count: Количество каналов
+    time_work_chanel: Время работы канала 1 (всего)
+    time_work_current_chanel: Время работы канала 1 (текущее)
+  machine_types:
+    milling: Фрезерный
+    turn: Токарный
+    other: Другой
+  machine_count: Станков всего
