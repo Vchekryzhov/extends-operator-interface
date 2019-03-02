@@ -15,7 +15,6 @@
         <select name="locale" id="">
           <option value="ru" <%= 'selected' if I18n.locale == :ru %>>Русский</option>
           <option value="en" <%= 'selected' if I18n.locale == :en %>>Английский</option>
-          <option value="en" <%= 'selected' if I18n.locale == :is %>>Испански</option>
         </select>
       </form>
       <% if @machines %>
