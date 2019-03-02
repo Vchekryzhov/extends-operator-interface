@@ -15,4 +15,10 @@ en:
     milling: mill
     turn: turn
     other: other
+  plc_entries:
+    counter: counter
+    voltage: voltage
+    temperature: temperature
+    state: state
+    regulator: regulator
   machine_count: Machine count

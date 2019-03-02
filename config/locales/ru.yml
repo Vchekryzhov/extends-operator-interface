@@ -11,6 +11,12 @@ ru:
     chanel_count: Количество каналов
     time_work_chanel: Время работы канала 1 (всего)
     time_work_current_chanel: Время работы канала 1 (текущее)
+  plc_entries:
+    counter: счетчик
+    voltage: напряжение
+    temperature: температура
+    state: состояние
+    regulator: регулятор
   machine_types:
     milling: Фрезерный
     turn: Токарный
