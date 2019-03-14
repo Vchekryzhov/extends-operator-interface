@@ -3,6 +3,7 @@ ru:
   mototime: Моточасы
   value: Значение
   plc: ПЛК
+  chanstatus: Статус канала
   detail: Подробнее
   mototimes:
     core_time: Время работы ядра (всего)
@@ -20,5 +21,9 @@ ru:
   machine_types:
     milling: Фрезерный
     turn: Токарный
+    stand: Стенд
     other: Другой
+  chanstatus:
+    progname: Имя программы
+    progstatus: Статус
   machine_count: Станков всего
