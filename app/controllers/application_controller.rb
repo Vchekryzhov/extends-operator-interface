@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  http_basic_authenticate_with name: "ksu", password: "ncsystems"
   skip_before_action :verify_authenticity_token
   before_action :set_locale
 
