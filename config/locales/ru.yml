@@ -3,7 +3,6 @@ ru:
   mototime: Моточасы
   value: Значение
   plc: ПЛК
-  chanstatus: Статус канала
   detail: Подробнее
   mototimes:
     core_time: Время работы ядра (всего)
@@ -12,6 +11,8 @@ ru:
     chanel_count: Количество каналов
     time_work_chanel: Время работы канала 1 (всего)
     time_work_current_chanel: Время работы канала 1 (текущее)
+    cur_chanstatus: Статус канала
+    cur_progname: Программа
   plc_entries:
     counter: счетчик
     voltage: напряжение
@@ -22,8 +23,5 @@ ru:
     milling: Фрезерный
     turn: Токарный
     stand: Стенд
-    other: Другой
-  chanstatus:
-    progname: Имя программы
-    progstatus: Статус
+    other: Другой  
   machine_count: Станков всего
