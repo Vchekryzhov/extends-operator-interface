@@ -2,7 +2,8 @@ require "redis"
 
 class InfoController < ApplicationController
   def show
-
+    machine = Machine.find(id)
+    @machine = machine
   end
 
   def index

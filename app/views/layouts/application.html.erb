@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Untitled</title>
+    <title><%= @machine.title if @machine  %></title>
+    <%= favicon_link_tag asset_path('favicon.png') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86">
@@ -18,7 +19,8 @@
         </select>
       </form>
       <% if @machines %>
-        <p><%= I18n.t(:machine_count) %> <%= @machines.count  %></p>
+        <a class="btn-floating btn-large waves-effect waves-light teal lighten-1 left bottom" id="add-button" href="/admin/machine/new"><i class="material-icons">add</i></a>
+        <p id="machine-count"><%= I18n.t(:machine_count) %> <%= @machines.count  %></p>
       <% end %>
     </nav>
 
