@@ -3,6 +3,7 @@ ru:
   mototime: Моточасы
   value: Значение
   plc: ПЛК
+  axis: Оси
   detail: Подробнее
   mototimes:
     core_time: Время работы ядра (всего)
@@ -19,6 +20,9 @@ ru:
     temperature: температура
     state: состояние
     regulator: регулятор
+  axis_entries:
+    test1: пробуем 1
+    test2: пробуем 2
   machine_types:
     milling: Фрезерный
     turn: Токарный
