@@ -1,24 +1,28 @@
 en:
-  title: title
-  mototime: mototime
+  title: Title
+  mototime: Mototime
   value: value
+  chan1: Channel 1
   plc: PLC
   detail: Deatil
   mototimes:
-    core_time: work time core (all)
-    core_current_time: work time core (current)
-    reload_core: count reloaded core
-    chanel_count: count chanel
-    time_work_chanel: work time chanel 1 (all)
-    time_work_current_chanel: work time chanel 1 (current)
-  machine_types:
-    milling: mill
-    turn: turn
-    other: other
+    core_time: Kernel work time (all)
+    core_current_time: Kernel work time (current)
+    reload_core: Count of kernel reload
+    chanel_count: Channel count
+  chan1_entries:
+    time_work_chanel: Channel 1 work time(all)
+    time_work_current_chanel: Channel 1 work time (current)
+    cur_chanstatus: Channel 1 status
+    cur_chanmode: Channel 1 mode
+    cur_progname: Programm  
   plc_entries:
-    counter: counter
-    voltage: voltage
-    temperature: temperature
-    state: state
-    regulator: regulator
+    state: SoftPLC state
+    plcobjall: Count of all SoftPLC obj
+    plcobjmainform: Count of mainform SoftPLC obj
+    test: Check   
+  machine_types:
+    milling: Mill
+    turn: Turn
+    other: Other  
   machine_count: Machine count
