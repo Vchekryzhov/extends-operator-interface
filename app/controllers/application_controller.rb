@@ -13,13 +13,4 @@ class ApplicationController < ActionController::Base
     I18n.locale = cookies[:locale]
     redirect_to request.referer
   end
-
-  def I18n.t(locale, loc = I18n.locale)
-   if I18n.exists?(locale)
-     super(locale, loc )
-   else
-     locale
-   end
-  end
-
 end
