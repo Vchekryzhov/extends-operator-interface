@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
     redirect_to request.referer
   end
 
-  def I18n.t(locale)
-   if I18n.exists?(locale, I18n.locale)
-     super(locale)
+  def I18n.t(locale, loc = I18n.locale)
+   if I18n.exists?(locale)
+     super(locale, loc )
    else
      locale
    end
