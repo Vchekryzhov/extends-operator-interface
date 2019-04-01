@@ -6,7 +6,7 @@ ru:
   plc: ПЛК
   axis: Оси
   detail: Подробнее
-  documentation: Документация
+  documentation: Док
   mototimes:
     core_time: Время работы ядра (всего)
     core_current_time: Время работы ядра (текущее)
