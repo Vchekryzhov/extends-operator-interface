@@ -1,0 +1,12 @@
+
+      <div class="collection">
+                <% @docs.each do |doc| %>
+                <a href="<%= doc.file.url %>"
+        <li class="collection-item avatar">
+          <i class="material-icons circle">insert_drive_file</i>
+          <span class="title"><%= doc.title  %></span>
+        </li>
+      </a>
+
+        <%end %>
+      </div>

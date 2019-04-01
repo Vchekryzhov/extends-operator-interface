@@ -25,6 +25,9 @@
       <% unless @machines %>
         <a class=" btn-large waves-effect waves-light left bottom" id="add-button" href="<%= root_path %>"><i class="material-icons">arrow_back</i></a>
       <% end %>
+      <% if @machine %>
+        <a class=" btn-large waves-effect waves-light left bottom" id="add-button" href="<%= documentations_path(@machine.id) %>">ДОКУМЕНТАЦИЯ</a>
+      <% end %>
     </nav>
 
     <%= yield %>
