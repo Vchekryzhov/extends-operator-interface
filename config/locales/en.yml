@@ -5,7 +5,7 @@ en:
   chan1: Channel 1
   plc: PLC
   detail: Deatil
-  documentation: Documentation
+  documentation: Dos
   mototimes:
     core_time: Kernel work time (all)
     core_current_time: Kernel work time (current)
