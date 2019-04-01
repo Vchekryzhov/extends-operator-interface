@@ -2,23 +2,29 @@ ru:
   title: "Название"
   mototime: Моточасы
   value: Значение
+  chan1: Канал 1
   plc: ПЛК
+  axis: Оси
   detail: Подробнее
   mototimes:
     core_time: Время работы ядра (всего)
     core_current_time: Время работы ядра (текущее)
-    reload_core: количество перезапусков ядра
+    reload_core: Количество перезапусков ядра
     chanel_count: Количество каналов
+  chan1_entries:
     time_work_chanel: Время работы канала 1 (всего)
     time_work_current_chanel: Время работы канала 1 (текущее)
-    cur_chanstatus: Статус канала
-    cur_progname: Программа
+    cur_chanstatus: Статус канала 1
+    cur_chanmode: Режим канала 1
+    cur_progname: Программа  
   plc_entries:
-    counter: счетчик
-    voltage: напряжение
-    temperature: температура
-    state: состояние
-    regulator: регулятор
+    state: Состояние SoftPLC
+    plcobjall: К-во элементов в ядре
+    plcobjmainform: К-во элементов на гл.форме
+    test: Проверка   
+  axis_entries:
+    test1: пробуем 1
+    test2: пробуем 2
   machine_types:
     milling: Фрезерный
     turn: Токарный

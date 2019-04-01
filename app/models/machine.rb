@@ -3,5 +3,5 @@ class Machine < ApplicationRecord
   has_many :documentations
   extend Enumerize
 
-  enumerize :machine_type, in: [:milling, :turn, :other]
+  enumerize :machine_type, in: [:milling, :turn, :stand, :other]
 end
