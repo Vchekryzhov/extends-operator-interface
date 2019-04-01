@@ -6,6 +6,7 @@ ru:
   plc: ПЛК
   axis: Оси
   detail: Подробнее
+  documentation: Документация
   mototimes:
     core_time: Время работы ядра (всего)
     core_current_time: Время работы ядра (текущее)
@@ -16,12 +17,12 @@ ru:
     time_work_current_chanel: Время работы канала 1 (текущее)
     cur_chanstatus: Статус канала 1
     cur_chanmode: Режим канала 1
-    cur_progname: Программа  
+    cur_progname: Программа
   plc_entries:
     state: Состояние SoftPLC
     plcobjall: К-во элементов в ядре
     plcobjmainform: К-во элементов на гл.форме
-    test: Проверка   
+    test: Проверка
   axis_entries:
     test1: пробуем 1
     test2: пробуем 2
@@ -29,5 +30,5 @@ ru:
     milling: Фрезерный
     turn: Токарный
     stand: Стенд
-    other: Другой  
+    other: Другой
   machine_count: Станков всего

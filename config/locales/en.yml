@@ -5,6 +5,7 @@ en:
   chan1: Channel 1
   plc: PLC
   detail: Deatil
+  documentation: Documentation
   mototimes:
     core_time: Kernel work time (all)
     core_current_time: Kernel work time (current)
@@ -15,14 +16,14 @@ en:
     time_work_current_chanel: Channel 1 work time (current)
     cur_chanstatus: Channel 1 status
     cur_chanmode: Channel 1 mode
-    cur_progname: Programm  
+    cur_progname: Programm
   plc_entries:
     state: SoftPLC state
     plcobjall: Count of all SoftPLC obj
     plcobjmainform: Count of mainform SoftPLC obj
-    test: Check   
+    test: Check
   machine_types:
     milling: Mill
     turn: Turn
-    other: Other  
+    other: Other
   machine_count: Machine count
