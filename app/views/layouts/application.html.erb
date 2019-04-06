@@ -28,6 +28,9 @@
       <% if @machine %>
         <a class=" btn-large waves-effect waves-light left bottom" id="add-button" href="<%= documentations_path(@machine.id) %>"><%= I18n.t(:documentation) %></a>
       <% end %>
+      <% if @machine %>
+        <a class=" btn-large waves-effect waves-light left bottom" id="add-button" href="<%= reviews_path(@machine.id) %>"><%= I18n.t(:review) %></a>
+      <% end %>
     </nav>
 
     <%= yield %>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'infos/:id', to: 'info#show', as: 'info'
   get 'infos', to: 'info#index'
   get '/set', to: 'data#set'
+  get '/reviews/:machine_id', to: 'review#show', as: :reviews
   get '/get/:id', to: 'data#get'
   get '/init_vue/:id', to: 'data#init_vue'
   get '/set_db', to: 'data#set_db'
