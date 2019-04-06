@@ -7,7 +7,7 @@ class DataController < ApplicationController
     data = {}
     results = JSON.parse(redis.get(id).gsub("=>",":"))
     results.each do |name, values|
-      data[I18n.t(name)] = values.map{|key, value|[I18n.t(key), value]} if values
+      data[I18n.t(name, default: name)] = values.map{|key, value|[I18n.t(key, default: key), value]} if values
     end
     render json: {data: data.to_a}, status:200
   end
@@ -17,7 +17,7 @@ class DataController < ApplicationController
     data = {}
     results = JSON.parse(redis.get(id).gsub("=>",":"))
     results.each do |name, values|
-      data[I18n.t(name)] = values.map{|key, value|[I18n.t(key), value]} if values
+      data[I18n.t(name, default: name)] = values.map{|key, value|[I18n.t(key, default: key), value]} if values
     end
     render json: {data: data.to_a.map{|d| d[0]}}, status:200
   end

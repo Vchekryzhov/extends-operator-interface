@@ -5,6 +5,17 @@ RailsAdmin.config do |config|
       username == 'ksu' && password == 'ncsystems'
     end
   end
+
+  config.model 'Machine' do
+    object_label_method do
+      :custom_label_method
+    end
+  end
+  Machine.class_eval do
+    def custom_label_method
+      "#{title} #{model} #{machine_type}"
+    end
+  end
   ### Popular gems integration
 
   ## == Devise ==
