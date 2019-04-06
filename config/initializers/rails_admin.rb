@@ -11,11 +11,6 @@ RailsAdmin.config do |config|
       :custom_label_method
     end
   end
-  Machine.class_eval do
-    def custom_label_method
-      "#{title} #{model} #{machine_type}"
-    end
-  end
   ### Popular gems integration
 
   ## == Devise ==
