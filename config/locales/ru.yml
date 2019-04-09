@@ -17,6 +17,8 @@ ru:
     time_work_current_chanel: Время работы канала 1 (текущее)
     cur_chanstatus: Статус канала 1
     cur_chanmode: Режим канала 1
+    time_work_prog: Время работы программы
+    time_work_prog_persent: Процент выполнения программы
     cur_progname: Программа
   plc_entries:
     state: Состояние SoftPLC
