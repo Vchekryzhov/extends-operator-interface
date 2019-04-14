@@ -32,6 +32,17 @@ class DataController < ApplicationController
     render json: {}, status: 200
   end
 
+  def set_db_with_history
+    redis = Redis.new
+    collection = {}
+    data_names.each do |data_name|
+        collection[data_name]= params[data_name].as_json
+    end
+    redis.set(id, collection)
+    MachineDatum.create(machine_id: id, data: collection)
+    render json: {}, status: 200
+  end
+
   private
 
   def id

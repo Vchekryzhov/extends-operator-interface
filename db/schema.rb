@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_06_141021) do
+ActiveRecord::Schema.define(version: 2019_04_14_074728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2019_04_06_141021) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["machine_id"], name: "index_documentations_on_machine_id"
+  end
+
+  create_table "machine_data", force: :cascade do |t|
+    t.bigint "machine_id"
+    t.jsonb "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["machine_id"], name: "index_machine_data_on_machine_id"
   end
 
   create_table "machines", force: :cascade do |t|

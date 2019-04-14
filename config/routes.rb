@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/get/:id', to: 'data#get'
   get '/init_vue/:id', to: 'data#init_vue'
   get '/set_db', to: 'data#set_db'
+  get '/set_db_with_history', to: 'data#set_db_with_history'
   get '/documentations/:machine_id', to: 'documentation#index', as: :documentations
   get '/documentations/:id', to: 'documentation#show'
   get '/set_db', to: 'data#set_db'
