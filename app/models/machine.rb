@@ -9,4 +9,8 @@ class Machine < ApplicationRecord
   def custom_label_method
     "#{title} #{model} #{machine_type}"
   end
+
+  def online?
+    !!Redis.new(db: 1).get(id)
+  end
 end

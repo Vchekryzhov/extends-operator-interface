@@ -8,6 +8,7 @@
             <span class="card-title"><%= machine.model if machine.image.url %></span>
           </div>
           <div class="card-content">
+            <i class="material-icons online-icon" style="<%= machine.online? ? 'color:green' : 'color:red' %>">fiber_smart_record</i>
             <span class="card-title black-text"><%= machine.model unless machine.image.url %></span>
             <span class="card-title black-text" ><%= I18n.t("machine_types.#{machine.machine_type}") %></span>
             <p class="black-text"><%= machine.title %></p>

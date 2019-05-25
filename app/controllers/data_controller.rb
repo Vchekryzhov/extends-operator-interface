@@ -29,6 +29,7 @@ class DataController < ApplicationController
         collection[data_name]= params[data_name].as_json
     end
     redis.set(id, collection)
+    Redis.new(db: 1).set(id, true, ex: 1)
     render json: {}, status: 200
   end
 
