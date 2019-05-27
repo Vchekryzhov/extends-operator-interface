@@ -26,8 +26,8 @@ ru:
     plcobjmainform: К-во элементов на гл.форме
     test: Проверка
   axis_entries:
-    test1: пробуем 1
-    test2: пробуем 2
+    test1: Пробуем 1
+    test2: Пробуем 2
   machine_types:
     milling: Фрезерный
     turn: Токарный
