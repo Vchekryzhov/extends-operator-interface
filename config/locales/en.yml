@@ -6,6 +6,7 @@ en:
   plc: PLC
   detail: Deatil
   documentation: Dos
+  last_online: Last online
   mototimes:
     core_time: Kernel work time (all)
     core_current_time: Kernel work time (current)

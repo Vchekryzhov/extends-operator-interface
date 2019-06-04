@@ -9,6 +9,9 @@
           </div>
           <div class="card-content">
             <i class="material-icons online-icon" title="<%= machine.last_online.to_s unless machine.online? %>" style="<%= machine.online? ? 'color:green' : 'color:red' %>">fiber_smart_record</i>
+            <% unless machine.online?  %>
+              <span class="black-text" style='position: relative; bottom: 7px;'><%= I18n.t(:last_online) %>: <%= machine.last_online.to_s %></span>
+            <%end %>
             <span class="card-title black-text"><%= machine.model unless machine.image.url %></span>
             <span class="card-title black-text" ><%= I18n.t("machine_types.#{machine.machine_type}") %></span>
             <p class="black-text"><%= machine.title %></p>
