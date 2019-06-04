@@ -64,10 +64,6 @@ task :setup do
   command %[mkdir -p "#{fetch(:deploy_to)}/shared/public/storage"]
   command %[chmod g+rx,u+rwx "#{fetch(:deploy_to)}/shared/public/storage"]
 
-  command %[mkdir -p "#{fetch(:deploy_to)}/shared/public/storage/rss"]
-  command %[chmod g+rx,u+rwx "#{fetch(:deploy_to)}/shared/public/storage/rss"]
-
-
   command %[touch "#{fetch(:deploy_to)}/shared/config/database.yml"]
   command %[touch "#{fetch(:deploy_to)}/shared/config/master.key"]
 end
@@ -81,7 +77,7 @@ task :deploy do
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
-    invoke :'rails:assets_precompile'
+    # invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
     on :launch do
       in_path(fetch(:current_path)) do
