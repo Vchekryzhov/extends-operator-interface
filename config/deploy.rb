@@ -77,14 +77,14 @@ task :deploy do
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
-    # invoke :'rails:assets_precompile'
+    invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
     on :launch do
       in_path(fetch(:current_path)) do
         invoke :'rbenv:load'
-        invoke :'delayed_job:restart'
-        command %(RAILS_ENV=#{fetch(:rails_env)} bin/pumactl -F config/puma.rb stop)
-        command %(RAILS_ENV=#{fetch(:rails_env)} bin/pumactl -F config/puma.rb start)
+        # invoke :'delayed_job:restart'
+        # command %(RAILS_ENV=#{fetch(:rails_env)} bundle exec pumactl -F config/puma.rb stop)
+        command %(RAILS_ENV=#{fetch(:rails_env)} bundle exec pumactl -F config/puma.rb start)
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -33,26 +35,25 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 #
-gem 'materialize-sass', '~> 1.0.0'
-gem 'material_icons'
-gem 'redis'
-gem 'vuejs-rails'
 gem 'listen', '~> 3.1.5'
+gem 'material_icons'
+gem 'materialize-sass', '~> 1.0.0'
+gem 'redis'
 gem 'rubocop'
+gem 'vuejs-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'rails_admin', '~> 1.3'
-gem 'enumerize'
 gem 'carrierwave', '~> 1.0'
-
+gem 'enumerize'
+gem 'rails_admin', '~> 1.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'mina'
+  gem('mina-delayed_job', require: false)
   gem 'mina-multistage', require: false
   gem 'mina-sidekiq', require: false
-  gem('mina-delayed_job', require: false)
   gem('mina-whenever', require: false)
 end
 
@@ -73,4 +74,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
