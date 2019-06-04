@@ -17,7 +17,7 @@ set :user, 'www'
 set :deploy_to, '/home/www/extend-interface'
 set :repository, 'git@github.com:Vchekryzhov/extends-operator-interface.git'
 set :branch, 'master'
-set :rails_env, 'development'
+set :rails_env, 'production'
 
 # Optional settings:
 #   set :user, 'foobar'          # Username in the server to SSH to.

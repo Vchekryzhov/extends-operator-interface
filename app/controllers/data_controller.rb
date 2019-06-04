@@ -29,7 +29,7 @@ class DataController < ApplicationController
         collection[data_name]= params[data_name].as_json
     end
     redis.set(id, collection)
-    Redis.new(db: 1).set(id, true, ex: 1)
+    Redis.new(db: 1).set(id, Time.current)
     render json: {}, status: 200
   end
 
@@ -41,6 +41,7 @@ class DataController < ApplicationController
     end
     redis.set(id, collection)
     MachineDatum.create(machine_id: id, data: collection)
+    Redis.new(db: 1).set(id, Time.current)
     render json: {}, status: 200
   end
 

@@ -10,7 +10,7 @@ class Machine < ApplicationRecord
     "#{title} #{model} #{machine_type}"
   end
 
-  def online?
-    !!Redis.new(db: 1).get(id)
+  def last_online
+    Time.parse(Redis.new(db: 1).get(id)) if Redis.new(db: 1).get(id)
   end
 end
