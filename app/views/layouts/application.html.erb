@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <% if request.path == '/'%>
+      <title>CNCCollectData</title>
+    <% end %>
     <title><%= @machine.title if @machine  %></title>
     <%= favicon_link_tag asset_path('favicon.png') %>
     <%= csrf_meta_tags %>
