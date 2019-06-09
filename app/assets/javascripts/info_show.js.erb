@@ -10,6 +10,8 @@ function page_ready(){
   })
 
 }
+
+
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems);
@@ -35,7 +37,12 @@ var filter = [];
 function filter_init() {
     filter_data = new Vue({
       el: '#filter',
-      data: {filters: [], selected_filters: []}
+      data: {filters: [], selected_filters: []},
+      methods:{
+        saveFilter: function(){
+          localStorage.setItem(window.location.pathname, filter_data.selected_filters )
+        }
+      }
     })
 }
 function get_real_time_data(){
@@ -53,6 +60,9 @@ function get_real_time_data(){
             temp[index] = item[0]
           })
           filter_data.filters = temp
+          if (localStorage.getItem(window.location.pathname)){
+            filter_data.selected_filters = localStorage.getItem(window.location.pathname).split(',')
+          }
         }
         if (filter_data.selected_filters.length != 0){
           data = data.filter((current)=>{

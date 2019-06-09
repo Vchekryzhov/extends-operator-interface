@@ -8,7 +8,7 @@
       <form>
         <p v-for='name in filters'>
           <label>
-            <input type="checkbox" :id="name" :value="name" class="filled-in" v-model="selected_filters">
+            <input type="checkbox" :id="name" :value="name" class="filled-in" @change="saveFilter" v-model="selected_filters">
             <span>{{name}}</span>
           </label>
         </p
