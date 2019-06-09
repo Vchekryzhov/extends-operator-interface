@@ -54,11 +54,13 @@ function get_real_time_data(){
           })
           filter_data.filters = temp
         }
-        data = data.filter((current)=>{
-          if (filter_data.selected_filters.includes(current[0])){
-            return current;
-          }
-        })
+        if (filter_data.selected_filters.length != 0){
+          data = data.filter((current)=>{
+            if (filter_data.selected_filters.includes(current[0])){
+              return current;
+            }
+          })
+        }
         real_time_data.data = data;
       }, function(error){
         console.log(error.statusText);
