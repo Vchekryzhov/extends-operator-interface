@@ -1,0 +1,53 @@
+function filter_form(){
+  Vue.component('product', {
+        props: {
+          premium: {
+            type: Boolean,
+            required: true
+          }
+        },
+        template: `
+         <div class="product">
+            <div class="product-info">
+                <h1>{{ name }}</h1>
+                <input type='checkbox' v-model='' >
+                <button v-on:click="addToCart"
+                  :disabled="!inStock"
+                  :class="{ disabledButton: !inStock }"
+                  >
+                Add to cart
+                </button>
+
+             </div>
+
+          </div>
+         `,
+        data() {
+          return {
+              name: 'Socks',
+              state: 'Vue Mastery',
+          }
+        },
+          methods: {
+            addToCart() {
+                this.$emit('add-to-cart', this.variants[this.selectedVariant].variantId)
+            },
+            updateProduct(index) {
+                this.selectedVariant = index
+            }
+          }
+      })
+
+      var app = new Vue({
+          el: '#app',
+          data: {
+            premium: true,
+            cart: []
+          },
+          methods: {
+            updateCart(id) {
+              this.cart.push(id)
+            }
+          }
+      })
+}

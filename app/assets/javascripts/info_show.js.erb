@@ -1,11 +1,19 @@
 window.onload = page_ready
 function page_ready(){
+
+  filter_init();
+  // filter_form();
   real_time_data_init();
   get_real_time_data();
   document.getElementById('locale-form').addEventListener('change',function(){
     this.submit();
   })
+
 }
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+  });
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.collapsible');
     var instances = M.Collapsible.init(elems);
@@ -23,7 +31,13 @@ function real_time_data_init() {
       data: {data: [[]]}
     })
 }
-
+var filter = [];
+function filter_init() {
+    filter_data = new Vue({
+      el: '#filter',
+      data: {filters: [], selected_filters: []}
+    })
+}
 function get_real_time_data(){
   if (window.location.pathname.includes("/infos/")){
     let id = window.location.pathname.split("/").pop()
@@ -33,6 +47,18 @@ function get_real_time_data(){
     function http_request() {
       Vue.http.get(link).then(function(response){
         data = response.data.data;
+        if (filter_data.filters.length == 0){
+          var temp =[]
+          data.forEach((item, index)=>{
+            temp[index] = item[0]
+          })
+          filter_data.filters = temp
+        }
+        data = data.filter((current)=>{
+          if (filter_data.selected_filters.includes(current[0])){
+            return current;
+          }
+        })
         real_time_data.data = data;
       }, function(error){
         console.log(error.statusText);

@@ -1,0 +1,8 @@
+// #filter form{
+//   position: fixed; /* при отсутствии свойств top, right, bottom, left элемент фиксируется на том месте окна браузера, на котором находился до прокрутки */
+//   width: 100%;
+//   max-width: inherit
+// }
+.modal form {
+  margin-left: 3%;
+}

@@ -1,4 +1,23 @@
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Фильтры</a>
 
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div id="filter" >
+      <h3> Выберите данные</h3>
+      <form>
+        <p v-for='name in filters'>
+          <label>
+            <input type="checkbox" :id="name" :value="name" class="filled-in" v-model="selected_filters">
+            <span>{{name}}</span>
+          </label>
+        </p
+        </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Закрыть</a>
+    </div>
+  </div>
 <div class="main-menu">
   <div>
     <h5 class="center-align"><%= @machine.title %></h5>
