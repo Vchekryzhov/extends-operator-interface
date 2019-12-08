@@ -8,6 +8,9 @@ ru:
   detail: Подробнее
   documentation: Док
   last_online: Был в сети
+  work_mode: Режим работы
+  cur_progname: Программа
+  state: Программа
   mototimes:
     core_time: Время работы ядра (всего)
     core_current_time: Время работы ядра (текущее)

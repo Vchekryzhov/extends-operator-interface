@@ -9,7 +9,17 @@
           </div>
           <div class="card-content">
             <i class="material-icons online-icon" title="<%= machine.last_online.to_s unless machine.online? %>" style="<%= machine.online? ? 'color:green' : 'color:red' %>">fiber_smart_record</i>
-            <% unless machine.online?  %>
+            <% if machine.online? %>
+              <% redis = Redis.new %>
+            <% begin %>
+              <% results = JSON.parse(redis.get(machine.id).gsub("=>",":")) %>
+              <p class="black-text" style='position: relative; bottom: 7px;'><%= I18n.t(:work_mode) %>: <%= results["chan1"]["chan1_entries.cur_chanmode"] %></p>
+              <p class="black-text" style='position: relative; bottom: 7px;'><%= I18n.t(:cur_progname) %>: <%= results["chan1"]["chan1_entries.cur_progname"] %></p>
+              <p class="black-text" style='position: relative; bottom: 7px;'><%= I18n.t(:state) %>: <%= results["chan1"]["chan1_entries.cur_chanstatus"] %></p>
+              <% resuce %>
+            <% end %>
+
+            <% else %>
               <span class="black-text" style='position: relative; bottom: 7px;'><%= I18n.t(:last_online) %>: <%= machine.last_online.to_s %></span>
             <%end %>
             <span class="card-title black-text"><%= machine.model unless machine.image.url %></span>
