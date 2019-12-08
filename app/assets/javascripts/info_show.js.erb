@@ -2,9 +2,9 @@ window.onload = page_ready
 function page_ready(){
 
   filter_init();
-  // filter_form();
-  // real_time_data_init();
-  // get_real_time_data();
+  filter_form();
+  real_time_data_init();
+  get_real_time_data();
   document.getElementById('locale-form').addEventListener('change',function(){
     this.submit();
   })
