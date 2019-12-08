@@ -3,11 +3,12 @@ function page_ready(){
 
   filter_init();
   // filter_form();
-  real_time_data_init();
-  get_real_time_data();
+  // real_time_data_init();
+  // get_real_time_data();
   document.getElementById('locale-form').addEventListener('change',function(){
     this.submit();
   })
+  analytics();
 
 }
 
@@ -81,4 +82,52 @@ function get_real_time_data(){
         var instances = M.Collapsible.init(elems);
     setInterval(http_request.bind(this), 100)
   }
+}
+
+function analytics() {
+    let id = window.location.pathname.split("/").pop()
+var analytic_link = `${window.location.protocol}//${window.location.host}/analytics/${id}`;
+// debugger;
+Vue.http.get(analytic_link).then(function(response){
+  createChart(response.body)
+ },
+ function(error){
+   console.log(error.statusText);
+ }
+)
+
+}
+function createChart(data) {
+  var ctx = document.getElementById('myChart').getContext('2d');
+  colors = data.labels.map(()=>{
+    return getRandomColor()
+  })
+  // debugger
+  // var fillPattern = ctx.createPattern(img, 'repeat');
+  var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'doughnut',
+
+      // The data for our dataset
+      data: {
+          labels: data.labels,
+          datasets: [{
+              label: 'My First dataset',
+              backgroundColor: 'rgb(255, 99, 132)',
+              backgroundColor: colors,
+              data: data.values
+          }],
+      },
+
+      // Configuration options go here
+      options: {}
+  });
+}
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }

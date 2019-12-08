@@ -12,6 +12,39 @@ class DataController < ApplicationController
     render json: {data: data.to_a}, status:200
   end
 
+  def analytic
+    date_from = ''
+    results = ActiveRecord::Base.connection.execute("
+    SELECT
+            ABS(SUM(extract(epoch from  (src1.created_at - src1.prev_created_at)) / 60)) work_time,
+            src1.chan1_status
+    FROM (
+            SELECT  src.machine_id,
+                    src.chan1_mode,
+                    src.chan1_status,
+                    src.created_at,
+                    lead(src.chan1_mode) over(PARTITION BY src.machine_id ORDER BY src.created_at) next_chan1_mode,
+                    lead(src.chan1_status) over(PARTITION BY src.machine_id ORDER BY src.created_at) next_chan1_status,
+                    lead(src.created_at) over(PARTITION BY src.machine_id ORDER BY src.created_at) prev_created_at
+             FROM
+    (SELECT  md.machine_id,
+            md.data->'chan1'->'chan1_entries.cur_chanmode' chan1_mode,
+            md.data->'chan1'->'chan1_entries.cur_chanstatus' chan1_status,
+            md.created_at
+    FROM machine_data md
+    WHERE md.machine_id = #{params[:id].to_i}
+          AND md.created_at > date('#{'2019-09-01'}')) src ) src1
+    GROUP BY src1.machine_id, src1.chan1_mode, src1.chan1_status;
+    ")
+    labels = []
+    values = []
+    results.each do |r|
+      labels.push(r['chan1_status'])
+      values.push(r['work_time'])
+    end
+    render json: {labels: labels, values: values}
+  end
+
   def init_vue
     redis = Redis.new
     data = {}
