@@ -16,7 +16,7 @@
               <p class="black-text" style='position: relative; bottom: 7px;'><%= I18n.t(:work_mode) %>: <%= results["chan1"]["chan1_entries.cur_chanmode"] %></p>
               <p class="black-text" style='position: relative; bottom: 7px;'><%= I18n.t(:cur_progname) %>: <%= results["chan1"]["chan1_entries.cur_progname"] %></p>
               <p class="black-text" style='position: relative; bottom: 7px;'><%= I18n.t(:state) %>: <%= results["chan1"]["chan1_entries.cur_chanstatus"] %></p>
-              <% resuce %>
+            <% rescue %>
             <% end %>
 
             <% else %>
