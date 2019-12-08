@@ -33,7 +33,7 @@ class DataController < ApplicationController
             md.created_at
     FROM machine_data md
     WHERE md.machine_id = #{params[:id].to_i}
-          AND md.created_at > date(#{Date.today.to_s(:db)})) src ) src1
+          AND md.created_at > date('#{Date.today.to_s(:db)}')) src ) src1
     GROUP BY src1.machine_id, src1.chan1_mode, src1.chan1_status;
     ")
     labels = []
