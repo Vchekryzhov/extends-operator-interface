@@ -7,6 +7,9 @@ en:
   detail: Deatil
   documentation: Dos
   last_online: Last online
+  work_mode: Work mode
+  state: State
+  cur_progname: Program
   mototimes:
     core_time: Kernel work time (all)
     core_current_time: Kernel work time (current)
