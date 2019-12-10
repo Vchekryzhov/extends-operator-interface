@@ -2,7 +2,7 @@ require 'pathname'
 
 app_root = Pathname.new(Dir.pwd)
 
-threads_count = ENV.fetch("RAILS_MAX_THREADS") { 3 }
+threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
 threads threads_count, threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
@@ -22,7 +22,7 @@ state_path app_root.join('tmp/pids/puma.state').to_s
 # Workers do not work on JRuby or Windows (both of which do not support
 # processes).
 #
-# workers ENV.fetch("WEB_CONCURRENCY") { 2 }
+workers ENV.fetch("WEB_CONCURRENCY") { 1 }
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code
