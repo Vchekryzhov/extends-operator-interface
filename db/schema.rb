@@ -10,12 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_14_074728) do
+ActiveRecord::Schema.define(version: 2020_01_18_145511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "documentations", force: :cascade do |t|
+  create_table "depart2devices", force: :cascade do |t|
+    t.bigint "department_id"
+    t.bigint "device_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["department_id"], name: "index_depart2devices_on_department_id"
+    t.index ["device_id"], name: "index_depart2devices_on_device_id"
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "device_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "devices", force: :cascade do |t|
+    t.string "name"
+    t.bigint "device_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["device_type_id"], name: "index_devices_on_device_type_id"
+  end
+
+  create_table "documentations", id: false, force: :cascade do |t|
+    t.bigserial "id", null: false
     t.string "title"
     t.string "file"
     t.bigint "machine_id"
@@ -24,11 +55,36 @@ ActiveRecord::Schema.define(version: 2019_04_14_074728) do
     t.index ["machine_id"], name: "index_documentations_on_machine_id"
   end
 
+  create_table "group_inputs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "inputs", force: :cascade do |t|
+    t.bigint "device_id"
+    t.bigint "group_input_id"
+    t.string "name"
+    t.string "values", array: true
+    t.boolean "is_error", default: false
+    t.string "message_error"
+    t.string "hint_error"
+    t.datetime "client_time"
+    t.bigint "request_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["device_id"], name: "index_inputs_on_device_id"
+    t.index ["group_input_id"], name: "index_inputs_on_group_input_id"
+    t.index ["request_id"], name: "index_inputs_on_request_id"
+  end
+
   create_table "machine_data", force: :cascade do |t|
     t.bigint "machine_id"
     t.jsonb "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_machine_data_on_created_at"
+    t.index ["data"], name: "data_index"
     t.index ["machine_id"], name: "index_machine_data_on_machine_id"
   end
 
@@ -37,6 +93,12 @@ ActiveRecord::Schema.define(version: 2019_04_14_074728) do
     t.string "model", null: false
     t.string "machine_type", null: false
     t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.jsonb "request"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
