@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   get '/documentations/:id', to: 'documentation#show'
   get '/analytics/:id', to: 'data#analytic'
   post 'selected-locale', to:'application#selected_locale'
+  get 'glass_get/:id', to: 'glass#get'
+  post 'glass_set/:id', to: 'glass#set'
 end
