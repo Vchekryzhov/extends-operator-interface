@@ -84,7 +84,7 @@ class DataController < ApplicationController
   end
 
   def v2_get
-    render json: Request.where('request @> ?', {id: params[:id]}.to_json)&.last&.request
+    render json: Request.where('request @> ?', {device_id: params[:id]}.to_json)&.last&.request
   end
 
   private
