@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   get '/set', to: 'data#set'
   get '/reviews/:machine_id', to: 'review#show', as: :reviews
   get '/get/:id', to: 'data#get'
+  get '/v2/get/:id', to: 'data#v2_get'
   get '/init_vue/:id', to: 'data#init_vue'
   get '/v1/set_db_with_history', to: 'data#set_db_with_history'
   post '/v1/set_db_with_history', to: 'data#set_db_with_history'
+  get '/v2/set_db_with_history', to: 'data#v2_set_db_with_history'
+  post '/v2/set_db_with_history', to: 'data#v2_set_db_with_history'
   get '/documentations/:machine_id', to: 'documentation#index', as: :documentations
   get '/documentations/:id', to: 'documentation#show'
   get '/analytics/:id', to: 'data#analytic'

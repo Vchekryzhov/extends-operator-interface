@@ -78,6 +78,15 @@ class DataController < ApplicationController
     render json: {}, status: 200
   end
 
+  def v2_set_db_with_history
+    Request.create(request: params[:datum])
+    render json: {}, status: 200
+  end
+
+  def v2_get
+    render json: Request.where('request @> ?', {id: params[:id].to_i}.to_json)&.last&.request
+  end
+
   private
 
   def id
