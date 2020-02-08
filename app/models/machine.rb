@@ -13,6 +13,7 @@ class Machine < ApplicationRecord
   def last_online
     Time.parse(Redis.new(db: 1).get(id)) if Redis.new(db: 1).get(id)
   end
+  
   def online?
     Redis.new(db: 1).get(id) && Time.parse(Redis.new(db: 1).get(id)) > Time.current - 3.seconds
   end
