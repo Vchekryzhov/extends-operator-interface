@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     scope 'v2' do
       scope module: 'api' do
         scope module: 'v2' do
-          get '/main', to: 'main#index'
+          get '/nodes', to: 'main#index'
         end
       end
     end
