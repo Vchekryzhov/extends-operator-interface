@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_18_145511) do
+ActiveRecord::Schema.define(version: 2020_02_08_141841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "depart2devices", force: :cascade do |t|
-    t.bigint "department_id"
-    t.bigint "device_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["department_id"], name: "index_depart2devices_on_department_id"
-    t.index ["device_id"], name: "index_depart2devices_on_device_id"
-  end
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
@@ -45,8 +36,7 @@ ActiveRecord::Schema.define(version: 2020_01_18_145511) do
     t.index ["device_type_id"], name: "index_devices_on_device_type_id"
   end
 
-  create_table "documentations", id: false, force: :cascade do |t|
-    t.bigserial "id", null: false
+  create_table "documentations", force: :cascade do |t|
     t.string "title"
     t.string "file"
     t.bigint "machine_id"
@@ -84,7 +74,6 @@ ActiveRecord::Schema.define(version: 2020_01_18_145511) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["created_at"], name: "index_machine_data_on_created_at"
-    t.index ["data"], name: "data_index"
     t.index ["machine_id"], name: "index_machine_data_on_machine_id"
   end
 
@@ -93,6 +82,24 @@ ActiveRecord::Schema.define(version: 2020_01_18_145511) do
     t.string "model", null: false
     t.string "machine_type", null: false
     t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "node2departs", force: :cascade do |t|
+    t.bigint "node_id"
+    t.bigint "department_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["department_id"], name: "index_node2departs_on_department_id"
+    t.index ["node_id"], name: "index_node2departs_on_node_id"
+  end
+
+  create_table "nodes", force: :cascade do |t|
+    t.string "title"
+    t.string "image"
+    t.string "preview_description"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

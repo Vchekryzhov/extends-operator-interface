@@ -19,4 +19,13 @@ Rails.application.routes.draw do
   post 'selected-locale', to:'application#selected_locale'
   get 'glass_get/:id', to: 'glass#get'
   post 'glass_set/:id', to: 'glass#set'
+  scope 'api' do
+    scope 'v2' do
+      scope module: 'api' do
+        scope module: 'v2' do
+          get '/nodes', to: 'main#index'
+        end
+      end
+    end
+  end
 end
