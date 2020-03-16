@@ -12,12 +12,13 @@ require 'mina/delayed_job'
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :application_name, 'extend-interface'
-set :domain, 'eio.ksu.ru.com'
-set :user, 'www'
-set :deploy_to, '/home/www/extend-interface'
+set :domain, '82.179.84.219'
+set :user, 'serveriot'
+set :deploy_to, '/home/serveriot/extend-interface'
 set :repository, 'git@github.com:Vchekryzhov/extends-operator-interface.git'
 set :branch, 'master'
 set :rails_env, 'production'
+set :port, 2848
 
 # Optional settings:
 #   set :user, 'foobar'          # Username in the server to SSH to.
@@ -88,11 +89,4 @@ task :deploy do
       end
     end
   end
-
-  # you can use `run :local` to run tasks on local machine before of after the deploy scripts
-  # run(:local){ say 'done' }
 end
-
-# For help in making your deploy script, see the Mina documentation:
-#
-#  - https://github.com/mina-deploy/mina/tree/master/docs
