@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_08_141841) do
+ActiveRecord::Schema.define(version: 2020_03_19_222036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_02_08_141841) do
     t.bigint "device_id"
     t.bigint "group_input_id"
     t.string "name"
-    t.string "values", array: true
+    t.string "value"
     t.boolean "is_error", default: false
     t.string "message_error"
     t.string "hint_error"
