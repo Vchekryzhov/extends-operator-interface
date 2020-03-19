@@ -7,7 +7,7 @@ class Request < ApplicationRecord
           device_id: i['device_id'],
           group_input_id: i['group_id'],
           value: i['value'],
-          client_time: i['timestamp'] || created_at,
+          client_time: created_at,
           name: i['name'],
           request_id: id
         )
