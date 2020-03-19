@@ -9,7 +9,7 @@ class Request < ApplicationRecord
           values: i['value'],
           client_time: i['timestamp'],
           name: i['name'],
-          request_id: r.id
+          request_id: id
         )
     end if request["inputs"].present?
   end
