@@ -11,6 +11,6 @@ class Request < ApplicationRecord
           name: i['name'],
           request_id: r.id
         )
-    end if r.request["inputs"].present?
+    end if request["inputs"].present?
   end
 end
