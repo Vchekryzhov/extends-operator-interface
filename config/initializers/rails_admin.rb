@@ -10,6 +10,9 @@ RailsAdmin.config do |config|
     object_label_method do
       :custom_label_method
     end
+    show do
+      exclude_fields :machine_datum
+    end
   end
   ### Popular gems integration
 
