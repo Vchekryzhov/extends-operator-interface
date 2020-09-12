@@ -6,6 +6,9 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.parent_controller = '::ApplicationController'
+
+
   config.model 'Machine' do
     object_label_method do
       :custom_label_method
