@@ -6,6 +6,6 @@ class MachinePhotoUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
   def url
-    "https://eio.ksu.ru.com" + super
+    "https://cnc.kovalev.team" + super
   end
 end
