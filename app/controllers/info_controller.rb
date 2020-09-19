@@ -7,7 +7,7 @@ class InfoController < ApplicationController
   end
 
   def index
-    @machines = Machine.all.order(:position)
+    @machines = Machine.all.order(position: :desc)
   end
 
   private
