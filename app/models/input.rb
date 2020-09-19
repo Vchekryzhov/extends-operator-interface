@@ -1,3 +1,3 @@
 class Input < ApplicationRecord
-  searchkick
+  # searchkick
 end

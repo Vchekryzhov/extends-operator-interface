@@ -1,5 +1,5 @@
 class Request < ApplicationRecord
-  searchkick
+  # searchkick
   # after_create :create_inputs
   def create_inputs
     request["inputs"].map do |i|
