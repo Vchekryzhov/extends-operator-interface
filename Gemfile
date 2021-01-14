@@ -47,7 +47,7 @@ gem 'vuejs-rails'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave', '~> 1.0'
 gem 'enumerize'
-gem 'rails_admin', '~> 1.3'
+gem 'rails_admin', '~> 1.4'
 gem 'searchkick'
 
 
