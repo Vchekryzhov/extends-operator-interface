@@ -45,7 +45,7 @@ gem 'rubocop'
 gem 'vuejs-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'enumerize'
 gem 'rails_admin', '~> 1.3'
 gem 'searchkick'
