@@ -10,16 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_19_222036) do
+ActiveRecord::Schema.define(version: 2021_03_13_134912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
   create_table "departments", force: :cascade do |t|
     t.string "name"
-    t.string "description"
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
+  end
+
+  create_table "device_nodes", force: :cascade do |t|
+    t.bigint "node_id"
+    t.bigint "device_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["device_id"], name: "index_device_nodes_on_device_id"
+    t.index ["node_id"], name: "index_device_nodes_on_node_id"
   end
 
   create_table "device_types", force: :cascade do |t|
@@ -51,9 +92,66 @@ ActiveRecord::Schema.define(version: 2020_03_19_222036) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "group_types", force: :cascade do |t|
+    t.string "title"
+    t.string "kind", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["kind"], name: "index_group_types_on_kind", unique: true
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "title"
+    t.bigint "parent_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "group_type_id"
+    t.bigint "device_id"
+    t.index ["device_id"], name: "index_groups_on_device_id"
+    t.index ["group_type_id"], name: "index_groups_on_group_type_id"
+    t.index ["parent_id"], name: "index_groups_on_parent_id"
+  end
+
+  create_table "hub2devices", force: :cascade do |t|
+    t.string "hub_id"
+    t.bigint "device_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["device_id"], name: "index_hub2devices_on_device_id"
+    t.index ["hub_id"], name: "index_hub2devices_on_hub_id"
+  end
+
+  create_table "hub_configs", force: :cascade do |t|
+    t.string "hub_id"
+    t.jsonb "config"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "config_hash"
+    t.index ["hub_id"], name: "index_hub_configs_on_hub_id"
+  end
+
+  create_table "hubs", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "description"
+    t.string "v_ver"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.jsonb "device_list_available"
+  end
+
+  create_table "input_types", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "kind", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "unit"
+    t.index ["kind"], name: "index_input_types_on_kind", unique: true
+  end
+
   create_table "inputs", force: :cascade do |t|
     t.bigint "device_id"
-    t.bigint "group_input_id"
     t.string "name"
     t.string "value"
     t.boolean "is_error", default: false
@@ -63,8 +161,13 @@ ActiveRecord::Schema.define(version: 2020_03_19_222036) do
     t.bigint "request_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "input_type"
+    t.bigint "group_id"
+    t.string "unit"
+    t.bigint "input_type_id"
     t.index ["device_id"], name: "index_inputs_on_device_id"
-    t.index ["group_input_id"], name: "index_inputs_on_group_input_id"
+    t.index ["group_id"], name: "index_inputs_on_group_id"
+    t.index ["input_type_id"], name: "index_inputs_on_input_type_id"
     t.index ["request_id"], name: "index_inputs_on_request_id"
   end
 
@@ -84,6 +187,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_222036) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position", default: 0
   end
 
   create_table "node2departs", force: :cascade do |t|
@@ -102,6 +206,8 @@ ActiveRecord::Schema.define(version: 2020_03_19_222036) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_color"
+    t.string "video_url"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -119,4 +225,23 @@ ActiveRecord::Schema.define(version: 2020_03_19_222036) do
     t.index ["machine_id"], name: "index_reviews_on_machine_id"
   end
 
+  create_table "values", id: false, force: :cascade do |t|
+    t.bigint "id", null: false
+    t.bigint "device_id"
+    t.jsonb "value"
+    t.datetime "created"
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.string "item_type", null: false
+    t.bigint "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object"
+    t.datetime "created_at"
+    t.text "object_changes"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
 end
