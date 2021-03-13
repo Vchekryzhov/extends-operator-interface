@@ -1,5 +1,6 @@
 class Machine < ApplicationRecord
   mount_uploader :image, MachinePhotoUploader
+  mount_uploader :video, VideoUploader
   has_many :documentations
   # has_many :machine_datum
   extend Enumerize

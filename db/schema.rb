@@ -188,6 +188,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_134912) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position", default: 0
+    t.string "video"
   end
 
   create_table "node2departs", force: :cascade do |t|
@@ -207,7 +208,6 @@ ActiveRecord::Schema.define(version: 2021_03_13_134912) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_color"
-    t.string "video_url"
   end
 
   create_table "requests", force: :cascade do |t|
