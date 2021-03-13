@@ -1,3 +1,3 @@
-<% @reviews.each do |review| %>
-  <%=  review.youtube_url.html_safe %>
-<% end %>
+<video autoplay muted loop id="myVideo">
+  <source src="<%= @reviews.first.video.url%>" type="video/mp4">
+</video>
