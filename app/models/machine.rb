@@ -2,7 +2,7 @@ class Machine < ApplicationRecord
   mount_uploader :image, MachinePhotoUploader
   mount_uploader :video, VideoUploader
   has_many :documentations
-  # has_many :machine_datum
+  has_many :reviews
   extend Enumerize
 
   enumerize :machine_type, in: [:milling, :turn, :stand, :other]
