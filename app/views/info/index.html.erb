@@ -5,14 +5,18 @@
         <div class="card">
           <a href="<%= info_path(machine.id) %>">
           <div class="card-image">
+            <% if machine.online? && machine.video.present?  %>
+
               <video id="video_background" preload="auto" autoplay="true" loop="true" muted="muted"
               loop="" playsinline="" webkit-playsinline="" x5-playsinline=""
               style="width: 100%; height: 100%;"
               poster="<%= machine.image.url if machine.image.present? %>"
               >
                     <source src="<%= machine.video.url if machine.video.present?%>" type='video/mp4' />
-                    <img src="<%= machine.image.url if machine.image.present?  %>">
                   </video>
+            <% else %>
+              <img src="<%= machine.image.url if machine.image.present?  %>">
+            <% end %>
             <span class="card-title"><%= machine.model if machine.image.url %></span>
           </div>
           <div class="card-content">
