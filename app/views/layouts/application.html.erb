@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <nav>
+    <nav class="navbar">
       <form id='locale-form' action="/selected-locale" method="post">
         <select name="locale" id="">
           <option value="ru" <%= 'selected' if I18n.locale == :ru %>>Русский</option>
@@ -22,8 +22,10 @@
         </select>
       </form>
       <% if @machines %>
-        <a class="btn-floating btn-large waves-effect waves-light teal lighten-1 left bottom" id="add-button" href="/admin/machine/new"><i class="material-icons">add</i></a>
-        <p id="machine-count"><%= I18n.t(:machine_count) %> <%= @machines.count  %></p>
+        <a class="btn-floating btn-large waves-effect waves-light teal lighten-1 left bottom" id="add-button" href="/admin">
+          <img style="width: 56px; height: 56px" src="icon.png" />
+        </a>
+        <!-- <span id="machine-count"><%#= I18n.t(:machine_count) %> <%= @machines.count  %></span> -->
       <% end %>
       <% unless @machines %>
         <a class=" btn-large waves-effect waves-light left bottom" id="add-button" href="<%= root_path %>"><i class="material-icons">arrow_back</i></a>
@@ -32,10 +34,19 @@
         <a class=" btn-large waves-effect waves-light left bottom" id="add-button" href="<%= documentations_path(@machine.id) %>"><%= I18n.t(:documentation) %></a>
       <% end %>
       <% if @machine && @machine.reviews.first.present? %>
-        <a class=" btn-large waves-effect waves-light left bottom" id="add-button" href="<%= reviews_path(@machine.id) %>"><%= I18n.t(:review) %></a>
+        <a class="btn-large waves-effect waves-light left bottom" id="add-button" href="<%= reviews_path(@machine.id) %>"><%= I18n.t(:review) %></a>
       <% end %>
+      <a  href="https://mdc.kovalev.team" target="_blank">
+        <img class=" mdc-link flex-vertical-center" style="width: 168px; height: 54px" src="iiot.svg" />
+      </a>
     </nav>
 
     <%= yield %>
+    <style>
+      .mdc-link{
+        top: 5px;
+        position: relative;
+      }
+    </style>
   </body>
 </html>
