@@ -23,7 +23,7 @@
       </form>
       <% if @machines %>
         <a class="btn-floating btn-large waves-effect waves-light teal lighten-1 left bottom" id="add-button" href="/admin">
-          <img style="width: 56px; height: 56px" src="icon.png" />
+          <img style="width: 56px; height: 56px" src="asset_path('icon.png')" />
         </a>
         <!-- <span id="machine-count"><%#= I18n.t(:machine_count) %> <%= @machines.count  %></span> -->
       <% end %>
@@ -37,7 +37,7 @@
         <a class="btn-large waves-effect waves-light left bottom" id="add-button" href="<%= reviews_path(@machine.id) %>"><%= I18n.t(:review) %></a>
       <% end %>
       <a  href="https://mdc.kovalev.team" target="_blank">
-        <img class=" mdc-link flex-vertical-center" style="width: 168px; height: 54px" src="iiot.svg" />
+        <img class=" mdc-link flex-vertical-center" style="width: 168px; height: 54px" src="asset_path('iiot.svg')" />
       </a>
     </nav>
 
