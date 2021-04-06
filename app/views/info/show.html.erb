@@ -57,10 +57,9 @@
   <div class="flex-item">
     <canvas id="myChart"></canvas>
 </div>
-  <div class="flex-item">  <iframe class="iv-i" style="display:block;margin:0;padding:0;border:0;"
-    src="<%=@machine.ivedion_src%>"
-    width="640" height="480" frameborder="0" allowfullscreen>
-  </iframe></div>
+  <div class="flex-item">
+    <%=@machine.ivedion_src%>
+  </div>
 </div>
 <style>
   #flex-container {
@@ -70,7 +69,7 @@
   }
 
   .flex-item{
-    padding-right: 40px;
+    padding-right: 5px;
     width: 640px;
     height: 480px;
   }
